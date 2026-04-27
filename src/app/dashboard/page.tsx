@@ -90,10 +90,8 @@ export default function DashboardPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
-                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-                </svg>
+              <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20 p-2 overflow-hidden">
+                <img src="/icons/habit-logo.png" alt="Logo" className="w-full h-full object-contain brightness-0 invert" />
               </div>
               <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Habits</span>
             </div>
@@ -101,7 +99,9 @@ export default function DashboardPage() {
             <div className="flex items-center space-x-6">
               <div className="hidden sm:block text-right">
                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Logged in as</p>
-                <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">{session.username || session.email}</p>
+                <p className="text-lg font-bold text-indigo-600 dark:text-indigo-400 leading-tight">
+                  {session.username || session.email}
+                </p>
               </div>
               <button
                 onClick={handleLogout}
@@ -109,9 +109,7 @@ export default function DashboardPage() {
                 className="p-2 text-slate-400 hover:text-red-500 transition-colors"
                 title="Logout"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                </svg>
+                <img src="/icons/logout.svg" alt="Logout" className="w-6 h-6 opacity-60 hover:opacity-100" />
               </button>
             </div>
           </div>
@@ -123,10 +121,10 @@ export default function DashboardPage() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div className="space-y-2">
             <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              Hey {session.username || 'there'}, <span className="text-indigo-600">track habits!</span>
+              Hey <span className="text-indigo-600">{session.username || 'there'}</span>, <span className="opacity-60">track habits!</span>
             </h2>
-            <p className="text-slate-500 dark:text-slate-400 font-medium">
-              You have {habits.length} habit{habits.length !== 1 ? 's' : ''} to track today
+            <p className="text-slate-500 dark:text-slate-400 font-medium text-lg">
+              You have <span className="text-slate-900 dark:text-white font-bold">{habits.length}</span> active habits
             </p>
           </div>
           <button
@@ -134,9 +132,7 @@ export default function DashboardPage() {
             data-testid="create-habit-button"
             className="inline-flex items-center justify-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold shadow-xl shadow-indigo-500/20 transform hover:-translate-y-0.5 transition-all"
           >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M12 4v16m8-8H4" />
-            </svg>
+            <img src="/icons/plus.svg" alt="Add" className="w-5 h-5 brightness-0 invert" />
             <span>New Habit</span>
           </button>
         </div>
@@ -163,10 +159,8 @@ export default function DashboardPage() {
             className="flex flex-col items-center justify-center py-24 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800 text-center space-y-4" 
             data-testid="empty-state"
           >
-            <div className="w-20 h-20 bg-slate-50 dark:bg-slate-800 rounded-3xl flex items-center justify-center text-slate-300">
-              <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+            <div className="w-20 h-20 bg-slate-50 dark:bg-slate-800 rounded-3xl flex items-center justify-center p-5 opacity-20">
+              <img src="/icons/habit-logo.png" alt="Empty" className="w-full h-full object-contain grayscale" />
             </div>
             <div className="space-y-1">
               <p className="text-xl font-bold text-slate-900 dark:text-white">No habits found</p>
@@ -194,10 +188,8 @@ export default function DashboardPage() {
       {showDeleteConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-200">
           <div className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] max-w-sm w-full shadow-2xl border border-slate-100 dark:border-slate-800 transform animate-in zoom-in-95 duration-200">
-            <div className="w-16 h-16 bg-red-50 dark:bg-red-500/10 rounded-2xl flex items-center justify-center text-red-500 mb-6 mx-auto">
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-              </svg>
+            <div className="w-16 h-16 bg-red-50 dark:bg-red-500/10 rounded-2xl flex items-center justify-center mb-6 mx-auto p-4">
+              <img src="/icons/trash.svg" alt="Delete" className="w-full h-full text-red-500" />
             </div>
             <h3 className="text-2xl font-bold text-center text-slate-900 dark:text-white mb-2">Are you sure?</h3>
             <p className="text-center text-slate-500 dark:text-slate-400 font-medium mb-8">

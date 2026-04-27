@@ -46,9 +46,7 @@ export const HabitCard: React.FC<HabitCardProps> = ({ habit, onToggle, onEdit, o
               className="inline-flex items-center space-x-1.5 px-3 py-1 bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 rounded-full text-xs font-bold uppercase tracking-wider"
               data-testid={`habit-streak-${slug}`}
             >
-              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.312L8.667 4.19a2.36 2.36 0 00-.83 1.187L7.042 7.824a1 1 0 001.317 1.222l2.36-.944a1 1 0 011.23.493l.8 1.6a1 1 0 001.442.312l3.273-2.182a1 1 0 00.312-1.442L12.395 2.553zM6.666 12.001c0-1.105.895-2 2-2s2 .895 2 2-.895 2-2 2-2-.895-2-2z" clipRule="evenodd" />
-              </svg>
+              <img src="/icons/streak.svg" alt="Streak" className="w-3.5 h-3.5" />
               <span>{streak} Day Streak</span>
             </div>
           </div>
@@ -66,9 +64,7 @@ export const HabitCard: React.FC<HabitCardProps> = ({ habit, onToggle, onEdit, o
           >
             {isCompletedToday ? (
               <>
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
-                </svg>
+                <img src="/icons/check.svg" alt="Done" className="w-5 h-5 brightness-0 invert" />
                 <span>Done</span>
               </>
             ) : (
@@ -83,9 +79,7 @@ export const HabitCard: React.FC<HabitCardProps> = ({ habit, onToggle, onEdit, o
               className="p-3 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 dark:hover:bg-indigo-500/10 rounded-xl transition-all"
               title="Edit Habit"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-              </svg>
+              <img src="/icons/edit.svg" alt="Edit" className="w-5 h-5" />
             </button>
             <button
               onClick={() => onDelete(habit.id)}
@@ -93,9 +87,7 @@ export const HabitCard: React.FC<HabitCardProps> = ({ habit, onToggle, onEdit, o
               className="p-3 text-slate-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-xl transition-all"
               title="Delete Habit"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-              </svg>
+              <img src="/icons/trash.svg" alt="Delete" className="w-5 h-5" />
             </button>
           </div>
         </div>

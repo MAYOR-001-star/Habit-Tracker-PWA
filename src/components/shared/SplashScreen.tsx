@@ -7,16 +7,13 @@ export const SplashScreen: React.FC = () => {
       data-testid="splash-screen"
     >
       <div className="relative">
-        {/* Animated rings */}
         <div className="absolute inset-0 scale-150 animate-pulse-slow opacity-20 bg-white rounded-full blur-2xl"></div>
-        <div className="absolute inset-0 scale-125 animate-pulse-slow opacity-30 bg-white rounded-full blur-xl animation-delay-500"></div>
+        <div className="absolute inset-0 scale-125 animate-pulse-slow opacity-30 bg-white rounded-full blur-xl"></div>
         
         <div className="relative bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-white/20 shadow-2xl transform transition-all duration-1000 scale-100">
           <div className="flex flex-col items-center space-y-4">
-            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg transform rotate-3 hover:rotate-0 transition-transform">
-              <svg className="w-10 h-10 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-              </svg>
+            <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-lg transform rotate-3 hover:rotate-0 transition-transform overflow-hidden p-2">
+              <img src="/icons/habit-logo.png" alt="Habit Tracker Logo" className="w-full h-full object-contain" />
             </div>
             <h1 className="text-4xl font-bold text-white tracking-tight">
               Habit Tracker
