@@ -14,7 +14,7 @@ export default function LoginPage() {
     const user = users.find((u) => u.email === email && u.password === pass);
 
     if (user) {
-      storage.saveSession({ userId: user.id, email: user.email });
+      storage.saveSession({ userId: user.id, email: user.email, username: user.username });
       router.push('/dashboard');
     } else {
       setError('Invalid email or password');
