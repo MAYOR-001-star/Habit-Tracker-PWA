@@ -2,7 +2,6 @@ const CACHE_NAME = 'habit-tracker-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/manifest.json',
-  '/favicon.ico',
   '/icons/habit-logo.png',
 ];
 

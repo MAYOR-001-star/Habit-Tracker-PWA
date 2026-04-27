@@ -5,6 +5,10 @@ import { SWRegistration } from "../components/shared/SWRegistration";
 export const metadata: Metadata = {
   title: "Habit Tracker",
   description: "Track your habits and build streaks",
+  icons: {
+    icon: "/icons/habit-logo.png",
+    apple: "/icons/habit-logo.png",
+  },
 };
 
 export default function RootLayout({
@@ -19,6 +23,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <link rel="icon" href="/icons/habit-logo.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#2563eb" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
