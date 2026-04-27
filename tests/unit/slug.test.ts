@@ -1,11 +1,16 @@
-import { createSlug } from '../../src/app/slug';
+import { describe, it, expect } from 'vitest';
+import { getHabitSlug } from '../../src/lib/slug';
 
-describe('slug utility', () => {
-  it('should convert text to lowercase and replace spaces with hyphens', () => {
-    expect(createSlug('Hello World')).toBe('hello-world');
+describe('getHabitSlug', () => {
+  it('returns lowercase hyphenated slug for a basic habit name', () => {
+    expect(getHabitSlug('Drink Water')).toBe('drink-water');
   });
 
-  it('should remove special characters', () => {
-    expect(createSlug('Hello @World!')).toBe('hello-world');
+  it('trims outer spaces and collapses repeated internal spaces', () => {
+    expect(getHabitSlug('  Read   Books  ')).toBe('read-books');
+  });
+
+  it('removes non alphanumeric characters except hyphens', () => {
+    expect(getHabitSlug('Gym! & Run?')).toBe('gym-run');
   });
 });

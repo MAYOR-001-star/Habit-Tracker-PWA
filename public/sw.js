@@ -1,15 +1,17 @@
 const CACHE_NAME = 'habit-tracker-v1';
-const ASSETS = [
+const ASSETS_TO_CACHE = [
   '/',
+  '/login',
+  '/signup',
+  '/dashboard',
   '/manifest.json',
-  '/icons/icon-192.png',
-  '/icons/icon-512.png'
+  '/favicon.ico',
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(ASSETS);
+      return cache.addAll(ASSETS_TO_CACHE);
     })
   );
 });

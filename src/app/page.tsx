@@ -1,39 +1,27 @@
-import Link from 'next/link';
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { SplashScreen } from '../components/shared/SplashScreen';
+import { storage } from '../lib/storage';
 
 export default function Home() {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gradient-to-br from-indigo-500 to-purple-600 text-white">
-      <main className="flex flex-col items-center justify-center w-full flex-1 px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to <span className="text-yellow-300">HabitTracker</span>
-        </h1>
+  const router = useRouter();
+  const [showSplash, setShowSplash] = useState(true);
 
-        <p className="mt-3 text-2xl">
-          Build better habits, one day at a time.
-        </p>
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const session = storage.getSession();
+      if (session) {
+        router.push('/dashboard');
+      } else {
+        router.push('/login');
+      }
+      setShowSplash(false);
+    }, 1500); // 1.5s delay within 800ms-2000ms range
 
-        <div className="flex flex-wrap items-center justify-around max-w-4xl mt-6 sm:w-full">
-          <Link
-            href="/login"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-indigo-600 hover:bg-white focus:text-indigo-600 transition-colors"
-          >
-            <h3 className="text-2xl font-bold">Login &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Access your dashboard and track your progress.
-            </p>
-          </Link>
+    return () => clearTimeout(timer);
+  }, [router]);
 
-          <Link
-            href="/signup"
-            className="p-6 mt-6 text-left border w-96 rounded-xl hover:text-indigo-600 hover:bg-white focus:text-indigo-600 transition-colors"
-          >
-            <h3 className="text-2xl font-bold">Sign Up &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Create a new account and start your journey today.
-            </p>
-          </Link>
-        </div>
-      </main>
-    </div>
-  );
+  return showSplash ? <SplashScreen /> : null;
 }

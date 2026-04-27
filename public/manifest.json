@@ -1,11 +1,10 @@
 {
-  "name": "HabitTracker",
+  "name": "Habit Tracker",
   "short_name": "Habits",
-  "description": "Build better habits, one day at a time.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#4f46e5",
+  "theme_color": "#2563eb",
   "icons": [
     {
       "src": "/icons/icon-192.png",
