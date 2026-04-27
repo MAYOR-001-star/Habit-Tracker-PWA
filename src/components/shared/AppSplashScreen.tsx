@@ -14,7 +14,7 @@ export const AppSplashScreen = ({ children }: { children: React.ReactNode }) => 
       const timer = setTimeout(() => {
         setShow(false);
         sessionStorage.setItem('habit-tracker-splash-shown', 'true');
-      }, 2500); // Slightly longer for the global one
+      }, 1200); // Reduced to 1.2s for faster feel
       return () => clearTimeout(timer);
     }
   }, []);

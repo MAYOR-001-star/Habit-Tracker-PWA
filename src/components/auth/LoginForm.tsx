@@ -28,8 +28,8 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin, error }) => {
       <div className="space-y-2">
         <label htmlFor="email" className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Email Address</label>
         <div className="relative group">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none opacity-40 group-focus-within:opacity-100 transition-opacity">
-            <img src="/icons/mail.svg" alt="Mail" className="w-5 h-5" />
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-all duration-200">
+            <img src="/icons/mail.svg" alt="Mail" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:indigo-filter" />
           </div>
           <input
             id="email"
@@ -48,8 +48,8 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin, error }) => {
           <label htmlFor="password" title="password" className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Password</label>
         </div>
         <div className="relative group">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none opacity-40 group-focus-within:opacity-100 transition-opacity">
-            <img src="/icons/lock.svg" alt="Lock" className="w-5 h-5" />
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-all duration-200">
+            <img src="/icons/lock.svg" alt="Lock" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:indigo-filter" />
           </div>
           <input
             id="password"

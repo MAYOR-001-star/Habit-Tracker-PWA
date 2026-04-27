@@ -29,8 +29,8 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onSignup, error }) => {
       <div className="space-y-2">
         <label htmlFor="signup-email" className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Email Address</label>
         <div className="relative group">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none opacity-40 group-focus-within:opacity-100 transition-opacity">
-            <img src="/icons/mail.svg" alt="Mail" className="w-5 h-5" />
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-all duration-200">
+            <img src="/icons/mail.svg" alt="Mail" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:indigo-filter" />
           </div>
           <input
             id="signup-email"
@@ -48,8 +48,8 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onSignup, error }) => {
       <div className="space-y-2">
         <label htmlFor="signup-username" className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Username</label>
         <div className="relative group">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none opacity-40 group-focus-within:opacity-100 transition-opacity">
-            <img src="/icons/user.svg" alt="User" className="w-5 h-5" />
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-all duration-200">
+            <img src="/icons/user.svg" alt="User" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:indigo-filter" />
           </div>
           <input
             id="signup-username"
@@ -66,8 +66,8 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onSignup, error }) => {
       <div className="space-y-2">
         <label htmlFor="signup-password" title="password" className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Create Password</label>
         <div className="relative group">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none opacity-40 group-focus-within:opacity-100 transition-opacity">
-            <img src="/icons/lock.svg" alt="Lock" className="w-5 h-5" />
+          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-all duration-200">
+            <img src="/icons/lock.svg" alt="Lock" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:indigo-filter" />
           </div>
           <input
             id="signup-password"
