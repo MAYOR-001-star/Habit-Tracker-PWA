@@ -89,8 +89,8 @@ export default function DashboardPage() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between h-20 items-center">
               <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 p-2 overflow-hidden">
-                  <img src="/icons/habit-logo.png" alt="Logo" className="w-full h-full object-contain brightness-0 invert" />
+                <div className="w-10 h-10 bg-white dark:bg-slate-800 rounded-xl flex items-center justify-center shadow-md border border-slate-100 dark:border-slate-700 p-1.5 overflow-hidden">
+                  <img src="/icons/habit-logo.png" alt="Logo" className="w-full h-full object-contain" />
                 </div>
                 <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Habits</span>
               </div>

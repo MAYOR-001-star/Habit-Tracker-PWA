@@ -18,8 +18,8 @@ export const HabitList: React.FC<HabitListProps> = ({ habits, onToggle, onEdit, 
         className="flex flex-col items-center justify-center py-24 bg-white dark:bg-slate-900 rounded-[3rem] border-2 border-dashed border-slate-200 dark:border-slate-800 text-center space-y-4" 
         data-testid="empty-state"
       >
-        <div className="w-20 h-20 bg-slate-50 dark:bg-slate-800 rounded-3xl flex items-center justify-center p-5 opacity-20">
-          <img src="/icons/habit-logo.png" alt="Empty" className="w-full h-full object-contain grayscale" />
+        <div className="w-20 h-20 bg-slate-50 dark:bg-slate-800 rounded-3xl flex items-center justify-center p-4 opacity-40">
+          <img src="/icons/habit-logo.png" alt="Empty" className="w-full h-full object-contain" />
         </div>
         <div className="space-y-1">
           <p className="text-xl font-bold text-slate-900 dark:text-white">No habits found</p>
