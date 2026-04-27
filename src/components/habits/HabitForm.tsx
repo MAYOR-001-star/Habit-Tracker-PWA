@@ -47,7 +47,7 @@ export const HabitForm: React.FC<HabitFormProps> = ({ initialData, onSubmit, onC
 
       {error && (
         <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl flex items-center space-x-2" role="alert">
-          <img src="/icons/error.svg" alt="Error" className="w-5 h-5" />
+          <img src="/icons/error.svg" alt="Error" className="w-5 h-5 text-red-500" />
           <p className="text-red-500 text-sm font-medium">{error}</p>
         </div>
       )}
@@ -62,7 +62,7 @@ export const HabitForm: React.FC<HabitFormProps> = ({ initialData, onSubmit, onC
             placeholder="e.g. Read for 30 mins"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="block w-full px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all duration-200"
+            className="block w-full px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-200"
             required
           />
         </div>
@@ -75,7 +75,7 @@ export const HabitForm: React.FC<HabitFormProps> = ({ initialData, onSubmit, onC
             placeholder="Add some details..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
-            className="block w-full px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all duration-200 min-h-[100px] resize-none"
+            className="block w-full px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-200 min-h-[100px] resize-none"
           />
         </div>
 
@@ -87,7 +87,7 @@ export const HabitForm: React.FC<HabitFormProps> = ({ initialData, onSubmit, onC
               data-testid="habit-frequency-select"
               value={frequency}
               onChange={(e) => setFrequency(e.target.value as 'daily')}
-              className="block w-full px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all duration-200 appearance-none"
+              className="block w-full px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-200 appearance-none"
             >
               <option value="daily">Daily</option>
             </select>
@@ -102,7 +102,7 @@ export const HabitForm: React.FC<HabitFormProps> = ({ initialData, onSubmit, onC
         <button
           type="submit"
           data-testid="habit-save-button"
-          className="flex-1 py-4 px-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl shadow-lg shadow-indigo-500/20 active:scale-[0.98] transition-all duration-200"
+          className="flex-1 py-4 px-6 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-lg shadow-blue-500/20 active:scale-[0.98] transition-all duration-200"
         >
           {initialData?.id ? 'Update Habit' : 'Save Habit'}
         </button>

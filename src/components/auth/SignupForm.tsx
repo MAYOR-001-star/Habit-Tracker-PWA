@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 interface SignupFormProps {
-  onSignup: (email: string, username: string, pass: string) => void;
+  onSignup: (email: string, username: string, password: string) => void;
   error?: string | null;
 }
 
@@ -26,11 +26,12 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onSignup, error }) => {
           <p className="text-red-500 text-sm font-medium">{error}</p>
         </div>
       )}
+      
       <div className="space-y-2">
         <label htmlFor="signup-email" className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Email Address</label>
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-all duration-200">
-            <img src="/icons/mail.svg" alt="Mail" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:indigo-filter" />
+            <img src="/icons/mail.svg" alt="Mail" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:blue-filter" />
           </div>
           <input
             id="signup-email"
@@ -39,7 +40,7 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onSignup, error }) => {
             placeholder="you@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="block w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all duration-200"
+            className="block w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-200"
             required
           />
         </div>
@@ -49,15 +50,16 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onSignup, error }) => {
         <label htmlFor="signup-username" className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Username</label>
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-all duration-200">
-            <img src="/icons/user.svg" alt="User" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:indigo-filter" />
+            <img src="/icons/user.svg" alt="User" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:blue-filter" />
           </div>
           <input
             id="signup-username"
             type="text"
+            data-testid="auth-signup-username"
             placeholder="johndoe"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="block w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all duration-200"
+            className="block w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-200"
             required
           />
         </div>
@@ -67,7 +69,7 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onSignup, error }) => {
         <label htmlFor="signup-password" title="password" className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Create Password</label>
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-all duration-200">
-            <img src="/icons/lock.svg" alt="Lock" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:indigo-filter" />
+            <img src="/icons/lock.svg" alt="Lock" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:blue-filter" />
           </div>
           <input
             id="signup-password"
@@ -76,7 +78,7 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onSignup, error }) => {
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="block w-full pl-10 pr-12 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all duration-200"
+            className="block w-full pl-10 pr-12 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-200"
             required
           />
           <button
@@ -88,12 +90,13 @@ export const SignupForm: React.FC<SignupFormProps> = ({ onSignup, error }) => {
           </button>
         </div>
       </div>
+
       <button
         type="submit"
         data-testid="auth-signup-submit"
-        className="w-full py-4 px-6 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold rounded-2xl shadow-lg shadow-indigo-500/30 active:scale-[0.98] transition-all duration-200"
+        className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-2xl shadow-lg shadow-blue-500/30 active:scale-[0.98] transition-all duration-200"
       >
-        Get Started
+        Create Account
       </button>
     </form>
   );

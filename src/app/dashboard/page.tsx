@@ -29,7 +29,7 @@ export default function DashboardPage() {
 
   const handleLogout = () => {
     storage.saveSession(null);
-    router.push('/login');
+    router.replace('/login');
   };
 
   const handleSaveHabit = (data: { name: string; description: string; frequency: 'daily' }) => {
@@ -84,7 +84,7 @@ export default function DashboardPage() {
   if (!session) {
     return (
       <div className="min-h-screen bg-[#f8fafc] dark:bg-[#020617] flex items-center justify-center">
-        <div className="w-12 h-12 border-4 border-indigo-600/20 border-t-indigo-600 rounded-full animate-spin"></div>
+        <div className="w-12 h-12 border-4 border-blue-600/20 border-t-blue-600 rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -96,7 +96,7 @@ export default function DashboardPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-indigo-600 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20 p-2 overflow-hidden">
+              <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 p-2 overflow-hidden">
                 <img src="/icons/habit-logo.png" alt="Logo" className="w-full h-full object-contain brightness-0 invert" />
               </div>
               <span className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">Habits</span>
@@ -105,7 +105,7 @@ export default function DashboardPage() {
             <div className="flex items-center space-x-6">
               <div className="hidden sm:block text-right">
                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Logged in as</p>
-                <p className="text-lg font-bold text-indigo-600 dark:text-indigo-400 leading-tight">
+                <p className="text-lg font-bold text-blue-600 dark:text-blue-400 leading-tight">
                   {session.username || session.email}
                 </p>
               </div>
@@ -127,7 +127,7 @@ export default function DashboardPage() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div className="space-y-2">
             <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              Hey <span className="text-indigo-600">{session.username || 'there'}</span>, <span className="opacity-60">track habits!</span>
+              Hey <span className="text-blue-600">{session.username || 'there'}</span>, <span className="opacity-60">track habits!</span>
             </h2>
             <p className="text-slate-500 dark:text-slate-400 font-medium text-lg">
               You have <span className="text-slate-900 dark:text-white font-bold">{habits.length}</span> active habits
@@ -136,7 +136,7 @@ export default function DashboardPage() {
           <button
             onClick={() => setIsAdding(true)}
             data-testid="create-habit-button"
-            className="inline-flex items-center justify-center space-x-2 bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-2xl font-bold shadow-xl shadow-indigo-500/20 transform hover:-translate-y-0.5 transition-all"
+            className="inline-flex items-center justify-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-2xl font-bold shadow-xl shadow-blue-500/20 transform hover:-translate-y-0.5 transition-all"
           >
             <img src="/icons/plus.svg" alt="Add" className="w-5 h-5 brightness-0 invert" />
             <span>New Habit</span>

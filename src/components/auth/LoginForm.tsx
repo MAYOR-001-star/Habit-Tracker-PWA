@@ -29,7 +29,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin, error }) => {
         <label htmlFor="email" className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Email Address</label>
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-all duration-200">
-            <img src="/icons/mail.svg" alt="Mail" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:indigo-filter" />
+            <img src="/icons/mail.svg" alt="Mail" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:blue-filter" />
           </div>
           <input
             id="email"
@@ -38,7 +38,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin, error }) => {
             placeholder="you@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="block w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all duration-200"
+            className="block w-full pl-10 pr-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-200"
             required
           />
         </div>
@@ -49,7 +49,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin, error }) => {
         </div>
         <div className="relative group">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none transition-all duration-200">
-            <img src="/icons/lock.svg" alt="Lock" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:indigo-filter" />
+            <img src="/icons/lock.svg" alt="Lock" className="w-5 h-5 opacity-50 group-focus-within:opacity-100 group-focus-within:blue-filter" />
           </div>
           <input
             id="password"
@@ -58,7 +58,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin, error }) => {
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="block w-full pl-10 pr-12 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all duration-200"
+            className="block w-full pl-10 pr-12 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-200"
             required
           />
           <button
@@ -73,7 +73,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ onLogin, error }) => {
       <button
         type="submit"
         data-testid="auth-login-submit"
-        className="w-full py-4 px-6 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white font-bold rounded-2xl shadow-lg shadow-indigo-500/30 active:scale-[0.98] transition-all duration-200"
+        className="w-full py-4 px-6 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold rounded-2xl shadow-lg shadow-blue-500/30 active:scale-[0.98] transition-all duration-200"
       >
         Sign In
       </button>

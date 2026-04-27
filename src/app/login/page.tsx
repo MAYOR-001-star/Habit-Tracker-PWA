@@ -15,7 +15,10 @@ export default function LoginPage() {
 
     if (user) {
       storage.saveSession({ userId: user.id, email: user.email, username: user.username });
-      router.push('/dashboard');
+      // Clear splash flag so it shows after login
+      sessionStorage.removeItem('habit-tracker-splash-shown');
+      // Redirect to home root to trigger splash screen
+      router.push('/');
     } else {
       setError('Invalid email or password');
     }
@@ -25,8 +28,8 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950 relative overflow-hidden">
       {/* Background Shapes */}
       <div className="absolute top-0 left-0 w-full h-full opacity-50 dark:opacity-20 pointer-events-none">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-indigo-500 rounded-full blur-[120px]"></div>
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-violet-500 rounded-full blur-[120px]"></div>
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-500 rounded-full blur-[120px]"></div>
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-cyan-500 rounded-full blur-[120px]"></div>
       </div>
 
       <div className="max-w-md w-full mx-4 relative z-10">
@@ -38,13 +41,13 @@ export default function LoginPage() {
           <p className="text-slate-500 dark:text-slate-400 font-medium">Continue your journey to better habits</p>
         </div>
 
-        <div className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl shadow-indigo-500/10 border border-slate-100 dark:border-slate-800">
+        <div className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl shadow-blue-500/10 border border-slate-100 dark:border-slate-800">
           <LoginForm onLogin={handleLogin} error={error} />
         </div>
 
         <p className="mt-8 text-center text-slate-600 dark:text-slate-400 font-medium">
           New here?{' '}
-          <a href="/signup" className="text-indigo-600 hover:text-indigo-500 underline underline-offset-4 decoration-2 decoration-indigo-600/30 hover:decoration-indigo-600 transition-all">Create an account</a>
+          <a href="/signup" className="text-blue-600 hover:text-blue-500 underline underline-offset-4 decoration-2 decoration-blue-600/30 hover:decoration-blue-600 transition-all">Create an account</a>
         </p>
       </div>
     </div>

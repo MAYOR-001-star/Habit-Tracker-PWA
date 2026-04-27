@@ -3,9 +3,9 @@
 :root {
   --background: #f8fafc;
   --foreground: #0f172a;
-  --primary: #6366f1;
-  --primary-hover: #4f46e5;
-  --glass: rgba(255, 255, 255, 0.7);
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --glass: rgba(255, 255, 255, 0.8);
   --glass-border: rgba(255, 255, 255, 0.5);
 }
 
@@ -20,7 +20,7 @@
   :root {
     --background: #020617;
     --foreground: #f8fafc;
-    --glass: rgba(15, 23, 42, 0.7);
+    --glass: rgba(15, 23, 42, 0.8);
     --glass-border: rgba(30, 41, 59, 0.5);
   }
 }
@@ -53,6 +53,6 @@ body {
   100% { transform: translateX(100%); }
 }
 
-.indigo-filter {
-  filter: invert(34%) sepia(86%) saturate(2338%) hue-rotate(228deg) brightness(91%) contrast(92%);
+.blue-filter {
+  filter: invert(34%) sepia(86%) saturate(2338%) hue-rotate(200deg) brightness(91%) contrast(92%);
 }

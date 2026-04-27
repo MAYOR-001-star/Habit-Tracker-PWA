@@ -25,16 +25,16 @@ export default function SignupPage() {
     };
 
     storage.saveUsers([...users, newUser]);
-    storage.saveSession({ userId: newUser.id, email: newUser.email, username: newUser.username });
-    router.push('/dashboard');
+    // We don't save the session here as per the new flow: Signup -> Login
+    router.push('/login');
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950 relative overflow-hidden">
       {/* Background Shapes */}
       <div className="absolute top-0 left-0 w-full h-full opacity-50 dark:opacity-20 pointer-events-none">
-        <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-500 rounded-full blur-[120px]"></div>
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-violet-500 rounded-full blur-[120px]"></div>
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-blue-500 rounded-full blur-[120px]"></div>
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-cyan-500 rounded-full blur-[120px]"></div>
       </div>
 
       <div className="max-w-md w-full mx-4 relative z-10">
@@ -46,13 +46,13 @@ export default function SignupPage() {
           <p className="text-slate-500 dark:text-slate-400 font-medium">Start building your streak today</p>
         </div>
 
-        <div className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl shadow-indigo-500/10 border border-slate-100 dark:border-slate-800">
+        <div className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl shadow-blue-500/10 border border-slate-100 dark:border-slate-800">
           <SignupForm onSignup={handleSignup} error={error} />
         </div>
 
         <p className="mt-8 text-center text-slate-600 dark:text-slate-400 font-medium">
           Already have an account?{' '}
-          <a href="/login" className="text-indigo-600 hover:text-indigo-500 underline underline-offset-4 decoration-2 decoration-indigo-600/30 hover:decoration-indigo-600 transition-all">Sign in here</a>
+          <a href="/login" className="text-blue-600 hover:text-blue-500 underline underline-offset-4 decoration-2 decoration-blue-600/30 hover:decoration-blue-600 transition-all">Sign in here</a>
         </p>
       </div>
     </div>

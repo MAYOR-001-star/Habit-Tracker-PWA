@@ -7,7 +7,6 @@ export const SplashScreen: React.FC = () => {
   const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
-    // Only access storage on the client
     const session = storage.getSession();
     if (session) {
       setUsername(session.username || session.email);
@@ -16,7 +15,7 @@ export const SplashScreen: React.FC = () => {
 
   return (
     <div 
-      className="fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700 z-[9999]"
+      className="fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-blue-600 via-blue-700 to-blue-900 z-[9999]"
       data-testid="splash-screen"
     >
       <div className="relative transform transition-all duration-700 scale-100 opacity-100">
@@ -34,7 +33,7 @@ export const SplashScreen: React.FC = () => {
             </h1>
             {username ? (
               <p className="text-white/80 font-semibold text-lg animate-in fade-in slide-in-from-bottom-2 duration-700 delay-300">
-                Welcome back, <span className="text-white underline decoration-indigo-400 decoration-2 underline-offset-4">{username}</span>
+                Welcome back, <span className="text-white underline decoration-blue-400 decoration-2 underline-offset-4">{username}</span>
               </p>
             ) : (
               <p className="text-white/60 font-medium tracking-wide uppercase text-xs">
@@ -53,8 +52,6 @@ export const SplashScreen: React.FC = () => {
           </div>
         </div>
       </div>
-      
-
     </div>
   );
 };

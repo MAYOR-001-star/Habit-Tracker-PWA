@@ -1,30 +1,25 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { SplashScreen } from '../components/shared/SplashScreen';
 import { storage } from '../lib/storage';
 
 export default function Home() {
   const router = useRouter();
-  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
-    // Show splash for at least 2 seconds for premium feel
+    // Determine target based on session
+    const session = storage.getSession();
+    const target = session ? '/dashboard' : '/login';
+
+    // Show splash for 1.5s then redirect
     const timer = setTimeout(() => {
-      const session = storage.getSession();
-      if (session) {
-        router.push('/dashboard');
-      } else {
-        router.push('/login');
-      }
-      setIsReady(true);
-    }, 2000);
+      router.push(target);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, [router]);
 
-  // We keep showing the splash screen until we are ready to unmount this page
-  // and the router has started navigating.
   return <SplashScreen />;
 }

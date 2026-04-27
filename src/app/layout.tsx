@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { AppSplashScreen } from "../components/shared/AppSplashScreen";
 
 export const metadata: Metadata = {
   title: "Habit Tracker",
@@ -19,15 +18,13 @@ export default function RootLayout({
     >
       <head>
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#6366f1" />
+        <meta name="theme-color" content="#2563eb" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="min-h-full flex flex-col">
-        <AppSplashScreen>
-          {children}
-        </AppSplashScreen>
+        {children}
         <script
           dangerouslySetInnerHTML={{
             __html: `
