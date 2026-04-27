@@ -16,7 +16,7 @@ export default function Home() {
     // Show splash for 1.5s then redirect
     const timer = setTimeout(() => {
       router.push(target);
-    }, 1500);
+    }, 500);
 
     return () => clearTimeout(timer);
   }, [router]);
