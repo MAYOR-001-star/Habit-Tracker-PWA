@@ -29,56 +29,93 @@ export const HabitForm: React.FC<HabitFormProps> = ({ initialData, onSubmit, onC
   return (
     <form 
       onSubmit={handleSubmit} 
-      className="space-y-4 p-4 border rounded-lg bg-gray-50"
+      className="space-y-6 bg-slate-50 dark:bg-slate-900/50 p-8 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-inner"
       data-testid="habit-form"
     >
-      {error && <p className="text-red-500 text-sm" role="alert">{error}</p>}
-      <div>
-        <label htmlFor="habit-name" className="block text-sm font-medium">Name</label>
-        <input
-          id="habit-name"
-          type="text"
-          data-testid="habit-name-input"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="mt-1 block w-full border rounded-md p-2"
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="habit-description" className="block text-sm font-medium">Description</label>
-        <textarea
-          id="habit-description"
-          data-testid="habit-description-input"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          className="mt-1 block w-full border rounded-md p-2"
-        />
-      </div>
-      <div>
-        <label htmlFor="habit-frequency" className="block text-sm font-medium">Frequency</label>
-        <select
-          id="habit-frequency"
-          data-testid="habit-frequency-select"
-          value={frequency}
-          onChange={(e) => setFrequency(e.target.value as 'daily')}
-          className="mt-1 block w-full border rounded-md p-2"
+      <div className="flex items-center justify-between mb-2">
+        <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
+          {initialData?.id ? 'Edit Habit' : 'Create New Habit'}
+        </h3>
+        <button 
+          type="button" 
+          onClick={onCancel}
+          className="text-slate-400 hover:text-slate-600 transition-colors"
         >
-          <option value="daily">Daily</option>
-        </select>
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
       </div>
-      <div className="flex space-x-2">
+
+      {error && (
+        <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl flex items-center space-x-2" role="alert">
+          <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p className="text-red-500 text-sm font-medium">{error}</p>
+        </div>
+      )}
+
+      <div className="space-y-4">
+        <div className="space-y-2">
+          <label htmlFor="habit-name" className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Habit Name</label>
+          <input
+            id="habit-name"
+            type="text"
+            data-testid="habit-name-input"
+            placeholder="e.g. Read for 30 mins"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="block w-full px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all duration-200"
+            required
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label htmlFor="habit-description" className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Description (Optional)</label>
+          <textarea
+            id="habit-description"
+            data-testid="habit-description-input"
+            placeholder="Add some details..."
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+            className="block w-full px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all duration-200 min-h-[100px] resize-none"
+          />
+        </div>
+
+        <div className="space-y-2">
+          <label htmlFor="habit-frequency" className="block text-sm font-semibold text-slate-700 dark:text-slate-200">Frequency</label>
+          <div className="relative">
+            <select
+              id="habit-frequency"
+              data-testid="habit-frequency-select"
+              value={frequency}
+              onChange={(e) => setFrequency(e.target.value as 'daily')}
+              className="block w-full px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-indigo-500/10 focus:border-indigo-500 outline-none transition-all duration-200 appearance-none"
+            >
+              <option value="daily">Daily</option>
+            </select>
+            <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-slate-400">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="flex gap-4 pt-4">
         <button
           type="submit"
           data-testid="habit-save-button"
-          className="bg-blue-600 text-white px-4 py-2 rounded-md"
+          className="flex-1 py-4 px-6 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl shadow-lg shadow-indigo-500/20 active:scale-[0.98] transition-all duration-200"
         >
-          Save
+          {initialData?.id ? 'Update Habit' : 'Save Habit'}
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="bg-gray-300 px-4 py-2 rounded-md"
+          className="px-6 py-4 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-bold rounded-2xl hover:bg-slate-300 dark:hover:bg-slate-700 transition-all"
         >
           Cancel
         </button>
