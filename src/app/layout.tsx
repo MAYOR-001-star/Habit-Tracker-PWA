@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { AppSplashScreen } from "../components/shared/AppSplashScreen";
 
 export const metadata: Metadata = {
   title: "Habit Tracker",
@@ -24,7 +25,9 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="min-h-full flex flex-col">
-        {children}
+        <AppSplashScreen>
+          {children}
+        </AppSplashScreen>
         <script
           dangerouslySetInnerHTML={{
             __html: `
