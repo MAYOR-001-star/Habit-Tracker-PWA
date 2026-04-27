@@ -25,8 +25,9 @@ export default function SignupPage() {
     };
 
     storage.saveUsers([...users, newUser]);
-    // We don't save the session here as per the new flow: Signup -> Login
-    router.push('/login');
+    // Save session here as requested, then redirect to login for confirmation
+    storage.saveSession({ userId: newUser.id, email: newUser.email, username: newUser.username });
+    router.push('/login?signup=success');
   };
 
   return (

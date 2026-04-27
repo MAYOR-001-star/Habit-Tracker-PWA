@@ -1,26 +1,34 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { LoginForm } from '../../components/auth/LoginForm';
 import { storage } from '../../lib/storage';
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (searchParams.get('signup') === 'success') {
+      setSuccess('Account created! Please log in to continue.');
+    }
+  }, [searchParams]);
 
   const handleLogin = (email: string, pass: string) => {
     const users = storage.getUsers();
+    // Re-verify the account exists in the "database"
     const user = users.find((u) => u.email === email && u.password === pass);
 
     if (user) {
       storage.saveSession({ userId: user.id, email: user.email, username: user.username });
-      // Clear splash flag so it shows after login
       sessionStorage.removeItem('habit-tracker-splash-shown');
-      // Redirect to home root to trigger splash screen
       router.push('/');
     } else {
       setError('Invalid email or password');
+      setSuccess(null);
     }
   };
 
@@ -42,6 +50,12 @@ export default function LoginPage() {
         </div>
 
         <div className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] shadow-2xl shadow-blue-500/10 border border-slate-100 dark:border-slate-800">
+          {success && (
+            <div className="mb-6 p-3 bg-green-500/10 border border-green-500/20 rounded-xl flex items-center space-x-2">
+              <img src="/icons/check.svg" alt="Success" className="w-5 h-5 text-green-500" />
+              <p className="text-green-500 text-sm font-medium">{success}</p>
+            </div>
+          )}
           <LoginForm onLogin={handleLogin} error={error} />
         </div>
 
@@ -51,5 +65,13 @@ export default function LoginPage() {
         </p>
       </div>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginContent />
+    </Suspense>
   );
 }
