@@ -5,12 +5,20 @@ import { storage } from '../../lib/storage';
 
 export const SplashScreen: React.FC = () => {
   const [username, setUsername] = useState<string | null>(null);
+  const [showManual, setShowManual] = useState(false);
 
   useEffect(() => {
     const session = storage.getSession();
     if (session) {
       setUsername(session.username || session.email);
     }
+
+    // If still here after 3 seconds, show a manual button
+    const timer = setTimeout(() => {
+      setShowManual(true);
+    }, 3000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -32,7 +40,7 @@ export const SplashScreen: React.FC = () => {
               Habit Tracker
             </h1>
             {username ? (
-              <p className="text-white/80 font-semibold text-lg animate-in fade-in slide-in-from-bottom-2 duration-700 delay-300">
+              <p className="text-white/80 font-semibold text-lg">
                 Welcome back, <span className="text-white underline decoration-blue-400 decoration-2 underline-offset-4">{username}</span>
               </p>
             ) : (
@@ -50,6 +58,17 @@ export const SplashScreen: React.FC = () => {
               {username ? 'Loading your progress' : 'Initializing'}
             </p>
           </div>
+
+          {showManual && (
+            <div className="pt-4 animate-in fade-in zoom-in duration-500">
+              <a 
+                href={username ? '/dashboard' : '/login'} 
+                className="px-6 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl text-xs font-bold transition-all border border-white/10"
+              >
+                Enter Manually
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </div>

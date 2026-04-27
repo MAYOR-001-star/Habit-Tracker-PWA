@@ -13,10 +13,12 @@ export default function Home() {
     const session = storage.getSession();
     const target = session ? '/dashboard' : '/login';
 
-    // Show splash for 1.5s then redirect
+    // Show splash for 1.2s then redirect
+    // Using replace to avoid having the splash screen in history
     const timer = setTimeout(() => {
-      router.push(target);
-    }, 500);
+      console.log('Redirecting to:', target);
+      router.replace(target);
+    }, 1200);
 
     return () => clearTimeout(timer);
   }, [router]);
