@@ -39,10 +39,8 @@ export default function SignupPage() {
 
       <div className="max-w-md w-full mx-4 relative z-10">
         <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 mb-6 transform -rotate-3">
-            <svg className="w-8 h-8 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 mb-6 transform -rotate-3 p-3">
+            <img src="/icons/habit-logo.png" alt="Logo" className="w-full h-full object-contain" />
           </div>
           <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-2">Join the Club</h2>
           <p className="text-slate-500 dark:text-slate-400 font-medium">Start building your streak today</p>

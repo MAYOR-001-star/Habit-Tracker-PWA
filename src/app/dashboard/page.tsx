@@ -19,7 +19,7 @@ export default function DashboardPage() {
   useEffect(() => {
     const currentSession = storage.getSession();
     if (!currentSession) {
-      router.push('/login');
+      router.replace('/login');
       return;
     }
     setSession(currentSession);
@@ -81,7 +81,13 @@ export default function DashboardPage() {
     setShowDeleteConfirm(null);
   };
 
-  if (!session) return null;
+  if (!session) {
+    return (
+      <div className="min-h-screen bg-[#f8fafc] dark:bg-[#020617] flex items-center justify-center">
+        <div className="w-12 h-12 border-4 border-indigo-600/20 border-t-indigo-600 rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#f8fafc] dark:bg-[#020617] transition-colors duration-300" data-testid="dashboard-page">
