@@ -10,7 +10,7 @@ import { toggleHabitCompletion } from '../../lib/habits';
 
 export default function DashboardPage() {
   const router = useRouter();
-  const [session, setSession] = useState<{ userId: string; email: string } | null>(null);
+  const [session, setSession] = useState<{ userId: string; email: string; username?: string } | null>(null);
   const [habits, setHabits] = useState<Habit[]>([]);
   const [isAdding, setIsAdding] = useState(false);
   const [editingHabit, setEditingHabit] = useState<Habit | null>(null);
@@ -101,7 +101,7 @@ export default function DashboardPage() {
             <div className="flex items-center space-x-6">
               <div className="hidden sm:block text-right">
                 <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Logged in as</p>
-                <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">{session.email}</p>
+                <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">{session.username || session.email}</p>
               </div>
               <button
                 onClick={handleLogout}
@@ -123,7 +123,7 @@ export default function DashboardPage() {
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div className="space-y-2">
             <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              Your Daily <span className="text-indigo-600">Habits</span>
+              Hey {session.username || 'there'}, <span className="text-indigo-600">track habits!</span>
             </h2>
             <p className="text-slate-500 dark:text-slate-400 font-medium">
               You have {habits.length} habit{habits.length !== 1 ? 's' : ''} to track today
