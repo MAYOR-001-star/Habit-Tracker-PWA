@@ -1,30 +1,65 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
+import { storage } from '../../lib/storage';
 
 export const SplashScreen: React.FC = () => {
+  const [username, setUsername] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Only access storage on the client
+    const session = storage.getSession();
+    if (session) {
+      setUsername(session.username || session.email);
+    }
+  }, []);
+
   return (
     <div 
-      className="fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700 z-50"
+      className="fixed inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-indigo-600 via-violet-600 to-purple-700 z-[9999]"
       data-testid="splash-screen"
     >
-      <div className="relative">
+      <div className="relative transform transition-all duration-700 scale-100 opacity-100">
         <div className="absolute inset-0 scale-150 animate-pulse-slow opacity-20 bg-white rounded-full blur-2xl"></div>
         <div className="absolute inset-0 scale-125 animate-pulse-slow opacity-30 bg-white rounded-full blur-xl"></div>
         
-        <div className="relative bg-white/10 backdrop-blur-xl p-8 rounded-3xl border border-white/20 shadow-2xl transform transition-all duration-1000 scale-100">
-          <div className="flex flex-col items-center space-y-4">
-            <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-lg transform rotate-3 hover:rotate-0 transition-transform overflow-hidden p-2">
-              <img src="/icons/habit-logo.png" alt="Habit Tracker Logo" className="w-full h-full object-contain" />
-            </div>
-            <h1 className="text-4xl font-bold text-white tracking-tight">
+        <div className="relative bg-white/10 backdrop-blur-xl p-10 rounded-[3rem] border border-white/20 shadow-2xl flex flex-col items-center space-y-6">
+          <div className="w-24 h-24 bg-white rounded-3xl flex items-center justify-center shadow-2xl transform rotate-3 p-3 overflow-hidden">
+            <img src="/icons/habit-logo.png" alt="Logo" className="w-full h-full object-contain" />
+          </div>
+          
+          <div className="text-center space-y-2">
+            <h1 className="text-4xl font-extrabold text-white tracking-tight">
               Habit Tracker
             </h1>
-            <div className="h-1 w-12 bg-white/40 rounded-full"></div>
-            <p className="text-white/60 text-sm font-medium tracking-widest uppercase">
-              Build your streak
+            {username ? (
+              <p className="text-white/80 font-semibold text-lg animate-in fade-in slide-in-from-bottom-2 duration-700 delay-300">
+                Welcome back, <span className="text-white underline decoration-indigo-400 decoration-2 underline-offset-4">{username}</span>
+              </p>
+            ) : (
+              <p className="text-white/60 font-medium tracking-wide uppercase text-xs">
+                Build your streak
+              </p>
+            )}
+          </div>
+
+          <div className="flex flex-col items-center space-y-4 pt-2">
+            <div className="h-1.5 w-16 bg-white/20 rounded-full overflow-hidden">
+              <div className="h-full bg-white w-full animate-[progress_1.5s_ease-in-out_infinite]"></div>
+            </div>
+            <p className="text-white/40 text-[10px] font-bold tracking-[0.2em] uppercase">
+              {username ? 'Loading your progress' : 'Initializing'}
             </p>
           </div>
         </div>
       </div>
+      
+      <style jsx>{`
+        @keyframes progress {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+      `}</style>
     </div>
   );
 };

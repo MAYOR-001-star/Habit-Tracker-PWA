@@ -7,9 +7,10 @@ import { storage } from '../lib/storage';
 
 export default function Home() {
   const router = useRouter();
-  const [showSplash, setShowSplash] = useState(true);
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
+    // Show splash for at least 2 seconds for premium feel
     const timer = setTimeout(() => {
       const session = storage.getSession();
       if (session) {
@@ -17,11 +18,13 @@ export default function Home() {
       } else {
         router.push('/login');
       }
-      setShowSplash(false);
-    }, 1500); // 1.5s delay within 800ms-2000ms range
+      setIsReady(true);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, [router]);
 
-  return showSplash ? <SplashScreen /> : null;
+  // We keep showing the splash screen until we are ready to unmount this page
+  // and the router has started navigating.
+  return <SplashScreen />;
 }
