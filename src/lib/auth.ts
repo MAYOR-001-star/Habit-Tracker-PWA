@@ -1,12 +1,12 @@
 import { storage } from './storage';
-import { User, Session } from '../types/auth';
+import { Session } from '../types/auth';
 
 export const loginUser = (email: string, pass: string): Session | null => {
   const users = storage.getUsers();
   const user = users.find((u) => u.email === email && u.password === pass);
   
   if (user) {
-    const session: Session = { userId: user.id, email: user.email, username: user.username };
+    const session: Session = { userId: user.id, email: user.email };
     storage.saveSession(session);
     return session;
   }

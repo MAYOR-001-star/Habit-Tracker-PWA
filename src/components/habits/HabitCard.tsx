@@ -47,7 +47,7 @@ export const HabitCard: React.FC<HabitCardProps> = ({ habit, onToggle, onEdit, o
               data-testid={`habit-streak-${slug}`}
             >
               <img src="/icons/streak.svg" alt="Streak" className="w-3.5 h-3.5" />
-              <span>{streak} Day Streak</span>
+              <span>{streak} days</span>
             </div>
           </div>
         </div>

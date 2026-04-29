@@ -7,7 +7,9 @@ import React from 'react';
 vi.mock('next/navigation', () => ({
   useRouter: () => ({
     push: vi.fn(),
+    replace: vi.fn(),
   }),
+  useSearchParams: () => new URLSearchParams(),
 }));
 
 describe('habit form', () => {
@@ -53,10 +55,12 @@ describe('habit form', () => {
     fireEvent.change(screen.getByTestId('habit-name-input'), { target: { value: 'New Name' } });
     fireEvent.click(screen.getByTestId('habit-save-button'));
 
-    const updatedHabits = storage.getHabits();
-    expect(updatedHabits[0].name).toBe('New Name');
-    expect(updatedHabits[0].id).toBe('h1');
-    expect(updatedHabits[0].createdAt).toBe('2023-01-01');
+    await waitFor(() => {
+      const updatedHabits = storage.getHabits();
+      expect(updatedHabits[0].name).toBe('New Name');
+      expect(updatedHabits[0].id).toBe('h1');
+      expect(updatedHabits[0].createdAt).toBe('2023-01-01');
+    });
   });
 
   it('deletes a habit only after explicit confirmation', async () => {

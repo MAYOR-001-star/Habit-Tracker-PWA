@@ -12,7 +12,7 @@ import { logoutUser } from '../../lib/auth';
 
 export default function DashboardPage() {
   const router = useRouter();
-  const [session, setSession] = useState<{ userId: string; email: string; username?: string } | null>(null);
+  const [session, setSession] = useState<{ userId: string; email: string } | null>(null);
   const [habits, setHabits] = useState<Habit[]>([]);
   const [isAdding, setIsAdding] = useState(false);
   const [editingHabit, setEditingHabit] = useState<Habit | null>(null);
@@ -40,7 +40,7 @@ export default function DashboardPage() {
 
     if (editingHabit) {
       updatedHabits = allHabits.map((h) =>
-        h.id === editingHabit.id ? { ...h, ...data } : h
+        h.id === editingHabit.id ? { ...h, name: data.name, description: data.description, frequency: data.frequency } : h
       );
     } else {
       const newHabit: Habit = {
@@ -99,7 +99,7 @@ export default function DashboardPage() {
                 <div className="hidden sm:block text-right">
                   <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Logged in as</p>
                   <p className="text-lg font-bold text-blue-600 dark:text-blue-400 leading-tight">
-                    {session?.username || session?.email || 'User'}
+                    {session?.email || 'User'}
                   </p>
                 </div>
                 <button
@@ -120,7 +120,7 @@ export default function DashboardPage() {
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
             <div className="space-y-2">
               <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-                Hey <span className="text-blue-600">{session?.username || 'there'}</span>, <span className="opacity-60">track habits!</span>
+                Your Habits <span className="opacity-60">— stay consistent!</span>
               </h2>
               <p className="text-slate-500 dark:text-slate-400 font-medium text-lg">
                 You have <span className="text-slate-900 dark:text-white font-bold">{habits.length}</span> active habits
@@ -161,7 +161,7 @@ export default function DashboardPage() {
           />
         </main>
 
-        {/* Modern Delete Confirmation Dialog */}
+        {/* Delete Confirmation Dialog */}
         {showDeleteConfirm && (
           <div className="py-10 fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-200">
             <div className="bg-white dark:bg-slate-900 p-8 rounded-[2.5rem] max-w-sm w-full shadow-2xl border border-slate-100 dark:border-slate-800 transform animate-in zoom-in-95 duration-200">

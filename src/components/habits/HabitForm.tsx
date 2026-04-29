@@ -63,7 +63,6 @@ export const HabitForm: React.FC<HabitFormProps> = ({ initialData, onSubmit, onC
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="block w-full px-4 py-3 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all duration-200"
-            required
           />
         </div>
 

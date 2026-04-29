@@ -5,11 +5,13 @@ import LoginPage from '../../src/app/login/page';
 import { storage } from '../../src/lib/storage';
 import React from 'react';
 
-// Mock useRouter
+// Mock next/navigation
 vi.mock('next/navigation', () => ({
   useRouter: () => ({
     push: vi.fn(),
+    replace: vi.fn(),
   }),
+  useSearchParams: () => new URLSearchParams(),
 }));
 
 describe('auth flow', () => {
