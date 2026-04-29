@@ -19,13 +19,11 @@ function LoginContent() {
 
   const handleLogin = (email: string, pass: string) => {
     const users = storage.getUsers();
-    // Re-verify the account exists in the "database"
     const user = users.find((u) => u.email === email && u.password === pass);
 
     if (user) {
-      storage.saveSession({ userId: user.id, email: user.email, username: user.username });
-      sessionStorage.removeItem('habit-tracker-splash-shown');
-      router.push('/');
+      storage.saveSession({ userId: user.id, email: user.email });
+      router.push('/dashboard');
     } else {
       setError('Invalid email or password');
       setSuccess(null);

@@ -4,13 +4,13 @@ import React, { useEffect, useState } from 'react';
 import { storage } from '../../lib/storage';
 
 export const SplashScreen: React.FC = () => {
-  const [username, setUsername] = useState<string | null>(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showManual, setShowManual] = useState(false);
 
   useEffect(() => {
     const session = storage.getSession();
     if (session) {
-      setUsername(session.username || session.email);
+      setIsLoggedIn(true);
     }
 
     // If still here after 3 seconds, show a manual button
@@ -39,15 +39,9 @@ export const SplashScreen: React.FC = () => {
             <h1 className="text-4xl font-extrabold text-white tracking-tight">
               Habit Tracker
             </h1>
-            {username ? (
-              <p className="text-white/80 font-semibold text-lg">
-                Welcome back, <span className="text-white underline decoration-blue-400 decoration-2 underline-offset-4">{username}</span>
-              </p>
-            ) : (
-              <p className="text-white/60 font-medium tracking-wide uppercase text-xs">
-                Build your streak
-              </p>
-            )}
+            <p className="text-white/60 font-medium tracking-wide uppercase text-xs">
+              {isLoggedIn ? 'Loading your progress' : 'Build your streak'}
+            </p>
           </div>
 
           <div className="flex flex-col items-center space-y-4 pt-2">
@@ -55,14 +49,14 @@ export const SplashScreen: React.FC = () => {
               <div className="h-full bg-white w-full animate-[progress_1.5s_ease-in-out_infinite]"></div>
             </div>
             <p className="text-white/40 text-[10px] font-bold tracking-[0.2em] uppercase">
-              {username ? 'Loading your progress' : 'Initializing'}
+              Initializing
             </p>
           </div>
 
           {showManual && (
             <div className="pt-4 animate-in fade-in zoom-in duration-500">
               <a 
-                href={username ? '/dashboard' : '/login'} 
+                href={isLoggedIn ? '/dashboard' : '/login'} 
                 className="px-6 py-2 bg-white/20 hover:bg-white/30 text-white rounded-xl text-xs font-bold transition-all border border-white/10"
               >
                 Enter Manually

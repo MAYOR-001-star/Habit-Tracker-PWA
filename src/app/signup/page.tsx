@@ -9,7 +9,7 @@ export default function SignupPage() {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
 
-  const handleSignup = (email: string, username: string, pass: string) => {
+  const handleSignup = (email: string, pass: string) => {
     const users = storage.getUsers();
     if (users.some((u) => u.email === email)) {
       setError('User already exists');
@@ -19,15 +19,13 @@ export default function SignupPage() {
     const newUser = {
       id: crypto.randomUUID(),
       email,
-      username,
       password: pass,
       createdAt: new Date().toISOString(),
     };
 
     storage.saveUsers([...users, newUser]);
-    // Save session here as requested, then redirect to login for confirmation
-    storage.saveSession({ userId: newUser.id, email: newUser.email, username: newUser.username });
-    router.push('/login');
+    storage.saveSession({ userId: newUser.id, email: newUser.email });
+    router.push('/dashboard');
   };
 
   return (
